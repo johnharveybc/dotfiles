@@ -1,0 +1,4 @@
+#!/bin/bash
+
+alias config='/usr/bin/git --git-dir=/mnt/Profiles/jharvey@trackvfx.local/.cfg/ --work-tree=/mnt/Profiles/jharvey@trackvfx.local'
+alias release="sudo $PROGRAMS_ROOT/bin/release_package"
