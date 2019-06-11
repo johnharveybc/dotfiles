@@ -53,3 +53,85 @@ builtin bind -x '"\C-x1": __fzf_history';
 builtin bind '"\C-r": "\C-x1\e^\er"'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export PYTHONPATH="/mnt/Plugins/Python:$PYTHONPATH"
+export PYTHONPATH="/usr/local/lib64/python2.7/site-packages:$PYTHONPATH"
+export SYNTHEYES_SCRIPT_PATH="/mnt/Plugins/SynthEyes/Scripts:$SYNTHEYES_SCRIPT_PATH"
+export PYTHON_CUSTOM_SCRIPTS_3DE4="/mnt/Plugins/3DE/Scripts:$PYTHON_CUSTOM_SCRIPTS_3DE4"
+
+export LD_LIBRARY_PATH="/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64:$LD_LIBRARY_PATH"
+export CPATH="/usr/include:/usr/local/include:$CPATH"
+
+export PYTHON_CUSTOM_SCRIPTS_3DE4__old=""
+export SYNTHEYES_SCRIPT_PATH__old=""
+export PYTHONPATH__old=""
+
+
+function setDev() {
+
+    read -r -p "SynthEyes Root: " SE_ROOT
+    if [ ! -z "$SE_ROOT" ]
+    then
+        export SYNTHEYES_SCRIPT_PATH__old="$SYNTHEYES_SCRIPT_PATH"
+        export SYNTHEYES_SCRIPT_PATH="$SE_ROOT"
+    fi
+    read -r -p "3DE Root: " TDE_ROOT
+    if [ ! -z "$TDE_ROOT" ]
+    then
+        export PYTHON_CUSTOM_SCRIPTS_3DE4__old="$PYTHON_CUSTOM_SCRIPTS_3DE4"
+        export PYTHON_CUSTOM_SCRIPTS_3DE4="$TDE_ROOT"
+    fi
+
+    read -r -p "Python Root: " PY_ROOT
+    if [ ! -z "$PY_ROOT" ]
+    then
+        export PYTHONPATH__old="$PYTHONPATH"
+        export PYTHONPATH="$PY_ROOT"
+    fi
+
+    export PS1="(dev) [\u@\h \W]\$ "
+
+}
+
+
+function setDefaultDev() {
+
+    export SYNTHEYES_SCRIPT_PATH__old="$SYNTHEYES_SCRIPT_PATH"
+    export SYNTHEYES_SCRIPT_PATH="/mnt/Profiles/jharvey@trackvfx.local/dev/TrackerConverter/SynthEyesPython"
+    export PYTHON_CUSTOM_SCRIPTS_3DE4__old="$PYTHON_CUSTOM_SCRIPTS_3DE4"
+    export PYTHON_CUSTOM_SCRIPTS_3DE4="/mnt/Profiles/jharvey@trackvfx.local/dev/TrackerConverter/3DEPython"
+    export PYTHONPATH__old="$PYTHONPATH"
+    export PYTHONPATH="/mnt/Profiles/jharvey@trackvfx.local/dev/TrackerConverter/python"
+    export PS1="(dev) [\u@\h \W]\$ "
+
+}
+
+function unsetDev() {
+    if [ ! -z "$PYTHON_CUSTOM_SCRIPTS_3DE4__old" ] 
+    then
+        export PYTHON_CUSTOM_SCRIPTS_3DE4="$PYTHON_CUSTOM_SCRIPTS_3DE4__old"
+        export PYTHON_CUSTOM_SCRIPTS_3DE4__old=""
+    fi
+
+    if [ ! -z "$SYNTHEYES_SCRIPT_PATH__old" ] 
+    then
+        export SYNTHEYES_SCRIPT_PATH="$SYNTHEYES_SCRIPT_PATH__old"
+        export SYNTHEYES_SCRIPT_PATH__old=""
+    fi
+
+    if [ ! -z "$PYTHONPATH__old" ] 
+    then
+        export PYTHONPATH="$PYTHONPATH__old"
+        export PYTHONPATH__old=""
+    fi
+
+    export PS1="[\u@\h \W]\$ "
+
+}
+
+export PYTHONPATH='/mnt/Plugins/Python:/usr/local/lib64/python2.7/site-packages:/usr/local/lib/python2.7/site-packages:/mnt/Plugins/Python:/usr/local/lib64/python2.7/site-packages:$PYTHONPATH'
+export PROGRAMS_ROOT="/mnt/Plugins/Programs"
+
+alias release="sudo $PROGRAMS_ROOT/bin/release_package"
+
+# /usr/lib64/python2.7/site-packages:
