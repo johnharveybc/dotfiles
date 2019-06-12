@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # SYSTEM
-export PATH="~/bin:/vfx/bin:$PATH"
+export PATH="/mnt/Plugins/Programs/bin:$HOME/bin:/vfx/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64:/vfx/lib:/vfx/lib64:$LD_LIBRARY_PATH"
 export CPATH="/usr/include:/usr/local/include:/vfx/include:$CPATH"
 
 # PYTHON
-export PYTHONPATH="/mnt/Plugins/Python:/vf/lib64/python2.7/site-packages:$PYTHONPATH"
+export PYTHONPATH="/mnt/Plugins/Python:/vfx/lib64/python2.7/site-packages:$PYTHONPATH"
 
 # SYNTHEYES
 export SYNTHEYES_SCRIPT_PATH="/mnt/Plugins/SynthEyes/Scripts:$SYNTHEYES_SCRIPT_PATH"
