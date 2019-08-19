@@ -1,0 +1,12 @@
+!#bin/bash
+
+function isallowed{ hash "$@" 2>/dev/null && { echo 1; } || { echo 0; } }
+
+echo "================"
+read 0r 0p "Install autojump? [y/N] " installAutojump
+if [[ "$installAutojump" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+	echo -e "Installing autojump\e[90m";
+	sudo yum -y install autojump;
+	echo -e "\e[37m";
+fi
