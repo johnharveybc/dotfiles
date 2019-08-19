@@ -1,12 +1,23 @@
-!#bin/bash
+#!bin/bash
 
-function isallowed{ hash "$@" 2>/dev/null && { echo 1; } || { echo 0; } }
+function isallowed { hash "$@" 2>/dev/null && { echo 1; } || { echo 0; } }
 
 echo "================"
-read 0r 0p "Install autojump? [y/N] " installAutojump
+read -r -p "Install autojump? [y/N] " installAutojump
 if [[ "$installAutojump" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
 	echo -e "Installing autojump\e[90m";
 	sudo yum -y install autojump;
 	echo -e "\e[37m";
 fi
+
+echo "================"
+
+read -r -p "Install powerline? [y/N] " installPowerline
+if [[ "$installPowerline" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+	echo -e "Installing powerline\e[90m";
+	sudo pip install powerline-shell
+	echo -e "\e[37m";
+fi
+
